@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityMainBinding
+import com.example.safestep.tips.TipListActivity
 
 /**
  * Home: "Help Me!" opens SMS composer; "I'm Safe" shows a toast; Contacts opens contacts screen.
@@ -24,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // “I’m Safe”
-        b.btnSafe.setOnClickListener {
-            Toast.makeText(this, "Glad you’re safe!", Toast.LENGTH_SHORT).show()
+          b.btnSafe.setOnClickListener {
+            startActivity(Intent(this, TipListActivity::class.java))
         }
 
         // “Help Me!” → open SMS app (no SEND_SMS permission required)
