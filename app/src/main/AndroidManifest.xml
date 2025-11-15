@@ -17,6 +17,8 @@
         <activity android:name=".CheckInActivity"/>
         <activity android:name=".PasswordActivity"/>
         <activity android:name=".DeleteAccountActivity"/>
+        <activity android:name=".tips.TipListActivity" />
+        
 
 
         <activity
