@@ -1,3 +1,32 @@
+/**
+ * SafeStep Mobile Application – Technical Documentation
+ * -----------------------------------------------------
+ *
+ * <p>
+ * SafeStep is a personal safety Android application implemented using Kotlin,
+ * XML layouts, and the Android SDK. The system provides emergency messaging,
+ * safety awareness guidance, user profile management, and quick access to
+ * trusted contacts. This documentation describes the architecture, modules,
+ * and behaviors implemented in the project, following a JavaDoc-like structure.
+ * </p>
+ *
+ * <p><strong>Core Features Implemented:</strong></p>
+ * <ul>
+ *   <li><strong>Emergency SMS</strong> – launches the device SMS app with a pre-
+ *       filled help message.</li>
+ *   <li><strong>Safety Tips System</strong> – category list and detailed guidance for
+ *       Work, Home, University, Online, and Street safety.</li>
+ *   <li><strong>User Authentication</strong> – Login screen and user data handling.</li>
+ *   <li><strong>Profile Management</strong> – view, edit, and update user info.</li>
+ *   <li><strong>Contacts Access</strong> – emergency contacts interface.</li>
+ *   <li><strong>Bottom Navigation</strong> – reusable navigation bar shared across screens.</li>
+ * </ul>
+ *
+ * <p>
+ * The following sections describe each Activity, data class, and layout resource
+ * in the SafeStep application.
+ * </p>
+ */
 package com.example.safestep
 
 import android.content.Intent
