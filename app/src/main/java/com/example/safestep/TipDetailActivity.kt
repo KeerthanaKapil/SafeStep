@@ -1,3 +1,26 @@
+/**
+ * TipDetailActivity
+ * ------------------
+ *
+ * <p>
+ * Displays detailed text-based safety guidance for one of the categories
+ * defined in {@link TipsData}. The chosen category is passed as an Intent
+ * Extra named <code>TIP_KEY</code>.
+ * </p>
+ *
+ * <p><strong>Behavior:</strong></p>
+ * <ul>
+ *   <li>Retrieves a Tip object from {@link TipsData}.</li>
+ *   <li>Populates the UI with the tip title and content.</li>
+ *   <li>Uses a ScrollView for long text rendering.</li>
+ *   <li>Includes the global bottom navigation bar.</li>
+ * </ul>
+ *
+ * <p>
+ * The UI is defined in <code>activity_tip_detail.xml</code>, using a combination
+ * of Material components and standard Android widgets.
+ * </p>
+ */
 package com.example.safestep.tips
 
 import android.os.Bundle
