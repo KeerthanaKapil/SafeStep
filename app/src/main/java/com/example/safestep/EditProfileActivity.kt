@@ -6,6 +6,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityEditProfileBinding
 
+/**
+ * Allows the user to edit their profile details.
+ *
+ * EditProfileActivity provides UI fields for modifying the user's name and
+ * email address. Once validated, the changes are saved to UserRepository and
+ * the user is returned to ProfileActivity.
+ *
+ * The screen uses ViewBinding for safe element access and standard Material
+ * components for input.
+ */
 class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityEditProfileBinding
