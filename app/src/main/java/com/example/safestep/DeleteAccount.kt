@@ -5,7 +5,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityDeleteAccountBinding
-
+/**
+ * Handles the user account deletion process.
+ *
+ * This class displays a confirmation screen that allows the user to permanently
+ * delete their account. If the user confirms the action, the class removes all
+ * stored user data from UserRepository and logs the user out or redirects them
+ * back to the LoginActivity. It ensures that account deletion is intentional and
+ * cannot happen accidentally.
+ */
 class DeleteAccountActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityDeleteAccountBinding
