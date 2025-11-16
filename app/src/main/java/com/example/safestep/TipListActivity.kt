@@ -1,3 +1,28 @@
+/**
+ * TipListActivity
+ * ----------------
+ *
+ * <p>
+ * Displays a list of all available safety categories as defined by the project
+ * requirements. Each category is represented by a Material button that navigates
+ * to {@link TipDetailActivity} with an encoded TIP_KEY representing the user's
+ * selection.
+ * </p>
+ *
+ * <p><strong>Available Categories:</strong></p>
+ * <ul>
+ *   <li>Safety at Work</li>
+ *   <li>Safety at Home</li>
+ *   <li>Safety at University</li>
+ *   <li>Women Safety Online</li>
+ *   <li>Safety on the Streets</li>
+ * </ul>
+ *
+ * <p>
+ * The Activity also attaches the shared bottom navigation bar via
+ * <code>include_bottom_nav.xml</code>.
+ * </p>
+ */
 package com.example.safestep.tips
 
 import android.content.Intent
