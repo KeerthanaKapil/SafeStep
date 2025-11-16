@@ -1,26 +1,10 @@
 /**
  * MainActivity
  * ------------
- *
- * <p>
  * The main entry point of the SafeStep application. Displays the primary
  * emergency and navigation actions for the user. This Activity utilizes Android
  * Intents for screen-to-screen navigation and the system SMS application for
  * emergency messages.
- * </p>
- *
- * <p><strong>Features:</strong></p>
- * <ul>
- *   <li><strong>Help Me:</strong> Opens SMS composer with a pre-defined alert message.</li>
- *   <li><strong>I’m Safe:</strong> Redirects the user to {@link TipListActivity} to view safety tips.</li>
- *   <li><strong>Contacts:</strong> Opens {@link ContactsActivity} to access trusted contacts.</li>
- *   <li><strong>Profile:</strong> Opens {@link ProfileActivity} for personal account management.</li>
- * </ul>
- *
- * <p>
- * This Activity uses ViewBinding to access UI components in a type-safe and
- * reliable manner. The layout is defined in <code>activity_main.xml</code>.
- * </p>
  */
 
 package com.example.safestep
@@ -33,8 +17,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityMainBinding
 import com.example.safestep.tips.TipListActivity
 
+
 /**
- * Home: "Help Me!" opens SMS composer; "I'm Safe" shows a toast; Contacts opens contacts screen.
+ * The main home screen of the SafeStep application.
+ *
+ * This class displays the primary actions of the app such as Help Me, I’m Safe,
+ * Contacts, and Profile. It handles user interaction on the home screen and
+ * routes the user to the correct Activity using Intents. The class also launches
+ * the SMS app to send an emergency message.
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
