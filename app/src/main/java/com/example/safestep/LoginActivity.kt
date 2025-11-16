@@ -9,6 +9,14 @@ import com.example.safestep.databinding.ActivityLoginBinding
 
 /**
  * Login screen: basic validation then navigates to Home (MainActivity).
+
+ * Manages the login process for the SafeStep application.
+ 
+ * This class collects the user’s email and password, validates the input, and
+ * authenticates the user using data stored in UserRepository. If the credentials
+ * are correct, the class navigates the user to MainActivity. It also displays
+ * error messages when login details are invalid, ensuring a clear and user-
+ * friendly sign-in experience.
  */
 class LoginActivity : AppCompatActivity() {
     private lateinit var b: ActivityLoginBinding
