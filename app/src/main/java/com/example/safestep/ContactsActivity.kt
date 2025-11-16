@@ -6,7 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityContactsBinding
 
 /**
- * Simple in-memory contacts (name + phone). Upgrade to Room later to persist data.
+ * Provides access to the user's trusted contacts.
+ *
+ * This Activity displays emergency contact options and serves as a dedicated
+ * screen for managing and accessing communication details. While the current
+ * version uses static content, it establishes the UI and navigation patterns
+ * for future integration.
+ *
+ * ContactsActivity includes the bottom navigation bar for consistent movement
+ * within the application.
  */
 class ContactsActivity : AppCompatActivity() {
     private lateinit var b: ActivityContactsBinding
