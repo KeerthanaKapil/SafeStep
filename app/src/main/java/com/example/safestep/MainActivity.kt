@@ -1,32 +1,28 @@
 /**
- * SafeStep Mobile Application – Technical Documentation
- * -----------------------------------------------------
+ * MainActivity
+ * ------------
  *
  * <p>
- * SafeStep is a personal safety Android application implemented using Kotlin,
- * XML layouts, and the Android SDK. The system provides emergency messaging,
- * safety awareness guidance, user profile management, and quick access to
- * trusted contacts. This documentation describes the architecture, modules,
- * and behaviors implemented in the project, following a JavaDoc-like structure.
+ * The main entry point of the SafeStep application. Displays the primary
+ * emergency and navigation actions for the user. This Activity utilizes Android
+ * Intents for screen-to-screen navigation and the system SMS application for
+ * emergency messages.
  * </p>
  *
- * <p><strong>Core Features Implemented:</strong></p>
+ * <p><strong>Features:</strong></p>
  * <ul>
- *   <li><strong>Emergency SMS</strong> – launches the device SMS app with a pre-
- *       filled help message.</li>
- *   <li><strong>Safety Tips System</strong> – category list and detailed guidance for
- *       Work, Home, University, Online, and Street safety.</li>
- *   <li><strong>User Authentication</strong> – Login screen and user data handling.</li>
- *   <li><strong>Profile Management</strong> – view, edit, and update user info.</li>
- *   <li><strong>Contacts Access</strong> – emergency contacts interface.</li>
- *   <li><strong>Bottom Navigation</strong> – reusable navigation bar shared across screens.</li>
+ *   <li><strong>Help Me:</strong> Opens SMS composer with a pre-defined alert message.</li>
+ *   <li><strong>I’m Safe:</strong> Redirects the user to {@link TipListActivity} to view safety tips.</li>
+ *   <li><strong>Contacts:</strong> Opens {@link ContactsActivity} to access trusted contacts.</li>
+ *   <li><strong>Profile:</strong> Opens {@link ProfileActivity} for personal account management.</li>
  * </ul>
  *
  * <p>
- * The following sections describe each Activity, data class, and layout resource
- * in the SafeStep application.
+ * This Activity uses ViewBinding to access UI components in a type-safe and
+ * reliable manner. The layout is defined in <code>activity_main.xml</code>.
  * </p>
  */
+
 package com.example.safestep
 
 import android.content.Intent
