@@ -6,6 +6,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityPasswordBinding
 
+/**
+ * Enables the user to update their account password.
+ *
+ * This Activity validates that the new password meets formatting rules and
+ * ensures that the confirmation password matches. Updated credentials are then
+ * persisted using UserRepository.
+ *
+ * PasswordActivity improves account security by enforcing proper password
+ * update flows and simple client-side validation.
+ */
 class PasswordActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityPasswordBinding
