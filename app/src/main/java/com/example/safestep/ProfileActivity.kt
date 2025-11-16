@@ -1,24 +1,9 @@
 /**
  * ProfileActivity
  * ----------------
- *
- * <p>
  * Displays the currently authenticated user's profile details including
  * name and email address. The Activity also provides access to functional
  * sub-screens such as Edit Profile, Password Update, and Account Deletion.
- * </p>
- *
- * <p><strong>Features:</strong></p>
- * <ul>
- *   <li>Reads and displays user details from {@link UserRepository}.</li>
- *   <li>Allows editing via {@link EditProfileActivity}.</li>
- *   <li>Allows password update via {@link PasswordActivity}.</li>
- *   <li>Allows account deletion via {@link DeleteAccount}.</li>
- * </ul>
- *
- * <p>
- * Includes bottom navigation for consistent UI behavior across the app.
- * </p>
  */
 package com.example.safestep
 
@@ -28,6 +13,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityProfileBinding
 
+/**
+ * Displays the user's profile information and account controls.
+ *
+ * This Activity retrieves user information from UserRepository and renders
+ * basic details such as name and email. It also provides actions to edit the
+ * profile, update the password, or delete the account entirely.
+ *
+ * ProfileActivity includes the shared bottom navigation bar and acts as the
+ * central screen for user account management.
+ */
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityProfileBinding
