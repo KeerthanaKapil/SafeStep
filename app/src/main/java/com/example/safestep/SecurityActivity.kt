@@ -4,7 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivitySecurityBinding
-
+/**
+ * Displays general safety and security information for the user.
+ *
+ * This class provides educational guidance related to personal safety,
+ * cybersecurity practices, or awareness tips. It functions as an informational
+ * screen within the SafeStep app and helps users learn how to stay safe both
+ * physically and digitally. The Activity also includes the shared bottom
+ * navigation bar so users can easily move back to the Home, Profile, or
+ * Contacts screens.
+ */
 class SecurityActivity : AppCompatActivity() {
 
     private lateinit var b: ActivitySecurityBinding
