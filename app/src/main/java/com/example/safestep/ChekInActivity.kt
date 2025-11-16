@@ -5,7 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityCheckInBinding
-
+/**
+ * Provides user check-in functionality.
+ *
+ * This class can be used to let the user confirm their safety or status. It is
+ * optional but supports future expansion of the SafeStep app.
+ */
 class CheckInActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityCheckInBinding
