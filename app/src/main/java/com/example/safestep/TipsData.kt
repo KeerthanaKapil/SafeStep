@@ -1,5 +1,13 @@
 package com.example.safestep.tips
-
+/**
+ * Central data source for all safety tips used in the application.
+ *
+ * TipsData stores static Tip objects for all five safety categories and
+ * provides helper functions for retrieving the appropriate Tip object using a
+ * TIP_KEY. This keeps tip content centralized and separate from UI logic.
+ *
+ * Each Tip contains a title and multi-paragraph text content.
+ */
 object TipsData {
 
     val titles = listOf(
@@ -18,3 +26,4 @@ object TipsData {
         "Street safety tips text…"
     )
 }
+
