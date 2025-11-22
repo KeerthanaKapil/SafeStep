@@ -39,5 +39,10 @@ class MainActivity : AppCompatActivity() {
         b.btnContacts.setOnClickListener {
             startActivity(Intent(this, ContactsActivity::class.java))
         }
+
+        // Go to Map screen
+        b.btnMap.setOnClickListener {
+            startActivity(Intent(this, LocationActivity::class.java))
+        }
     }
 }

@@ -22,6 +22,11 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnContacts" android:text="@string/contacts"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_m" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMap" android:text="Map"
         android:layout_width="match_parent" android:layout_height="wrap_content" />
 
     <Button
