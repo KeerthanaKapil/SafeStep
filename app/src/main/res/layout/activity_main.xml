@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:padding="@dimen/space_l" android:orientation="vertical"
-    android:gravity="center" android:background="@color/ss_surface">
+    android:gravity="center" android:background="@drawable/register">
 
     <TextView
         android:id="@+id/title" android:text="SafeStep Home" android:textSize="26sp"
-        android:textColor="@color/ss_onSurface"
+        android:textColor="@android:color/white"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_l" />
 
@@ -36,7 +36,5 @@
         android:text="Profile"
         android:layout_marginTop="@dimen/space_m"
         android:layout_marginBottom="@dimen/space_m" />
-
-
 
 </LinearLayout>
