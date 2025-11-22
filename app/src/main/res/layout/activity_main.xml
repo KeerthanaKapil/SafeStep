@@ -28,15 +28,4 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnMap" android:text="Map"
         android:layout_width="match_parent" android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:layout_marginTop="@dimen/space_m"
-        android:layout_marginBottom="@dimen/space_m" />
-
-
-
 </LinearLayout>

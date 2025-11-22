@@ -7,11 +7,4 @@
     <color name="ss_surface">#F6FAFC</color>
     <color name="ss_onSurface">#1B1B1B</color>
     <color name="ss_outline">#D9E2EC</color>
-    <color name="profilePurple">#8D6BAF</color>
-    <color name="headerPink">#FFB6CF</color>
-    <color name="bottomPink">#FEC3DB</color>
-    <color name="hotPinkButton">#FF4B83</color>
-    <color name="tealField">#9DE3D0</color>
-    <color name="avatarCircle">#B080C4</color>
-
 </resources>
