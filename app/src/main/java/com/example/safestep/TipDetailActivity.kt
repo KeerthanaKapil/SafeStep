@@ -1,12 +1,15 @@
-package com.example.safestep.tips
+package com.example.safestep
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.safestep.R
 
+/**
+ * Displays the detailed content of a single safety tip.
+ * Allows the user to navigate between tips using previous and next buttons.
+ */
 class TipDetailActivity : AppCompatActivity() {
 
     private var index = 0
@@ -15,6 +18,7 @@ class TipDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tip_detail)
 
+        // Retrieve the selected tip index from the intent
         index = intent.getIntExtra("index", 0)
 
         updateScreen()
@@ -23,6 +27,7 @@ class TipDetailActivity : AppCompatActivity() {
         val btnNext = findViewById<Button>(R.id.btnNext)
         val btnClose = findViewById<Button>(R.id.btnClose)
 
+        // Navigate to the previous tip
         btnPrev.setOnClickListener {
             if (index > 0) {
                 index--
@@ -30,6 +35,7 @@ class TipDetailActivity : AppCompatActivity() {
             }
         }
 
+        // Navigate to the next tip
         btnNext.setOnClickListener {
             if (index < TipsData.titles.size - 1) {
                 index++
@@ -37,11 +43,16 @@ class TipDetailActivity : AppCompatActivity() {
             }
         }
 
+        // Close the activity and return to the list
         btnClose.setOnClickListener {
             finish()
         }
     }
 
+    /**
+     * Updates the on-screen TextViews and ImageView with the content
+     * for the current tip index.
+     */
     private fun updateScreen() {
         val tvTitle = findViewById<TextView>(R.id.tvTitle)
         val tvContent = findViewById<TextView>(R.id.tvContent)
