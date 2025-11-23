@@ -15,35 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeStep">
 
-      
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBzrFEW5YeSVxKlIw-0Y6PKHzPskISd74o" />
+            android:value="YOUR_API_KEY" />
 
-        <activity
-            android:name=".LocationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ContactsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name = "LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".ProfileActivity" android:exported="false" />
+        <activity android:name=".EditProfileActivity" android:exported="false" />
+        <activity android:name=".PasswordActivity" android:exported="false" />
+        <activity android:name=".SecurityActivity" android:exported="false" />
+        <activity android:name=".DeleteAccountActivity" android:exported="false" />
+        <activity android:name=".LocationActivity" android:exported="false" />
+        <activity android:name=".ContactsActivity" android:exported="false" />
+
     </application>
 
 </manifest>
