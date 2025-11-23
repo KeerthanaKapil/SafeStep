@@ -1,7 +1,23 @@
 package com.example.safestep
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "users")
 data class User(
-    var name: String = "User",
-    var address: String = "1234 st name Ave",
-    var phone: String = "+1 123-456-7890"
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+
+    @ColumnInfo(name = "full_name")
+    val name: String,
+
+    @ColumnInfo(name = "email_address")
+    val email: String,
+
+    @ColumnInfo(name = "phone_number")
+    val phone: String,
+
+    @ColumnInfo(name = "user_password")
+    val password: String
 )

@@ -1,14 +1,9 @@
 package com.example.safestep
 
+/**
+ * A simple object to hold the currently logged-in user's data.
+ *
+ */
 object UserRepository {
-    var currentUser = User()
-
-    fun updateUser(name: String, address: String, phone: String) {
-        currentUser.name = name
-        currentUser.address = address
-        currentUser.phone = phone
-    }
+    var currentUser: User? = null
 }
-
-
-
