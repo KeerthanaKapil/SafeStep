@@ -40,15 +40,13 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
         // Quick Call button
         b.btnQuickCall.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
-            // This currently calls a hardcoded number for simulation.
-            intent.data = Uri.parse("tel:123-456-7890")
+            intent.data = Uri.parse("tel:123-456-7890") // Example number
             startActivity(intent)
         }
 
         // Share Location button
         b.btnShareLocation.setOnClickListener {
-            // This currently shares a hardcoded location for simulation.
-            val locationUrl = "https://maps.google.com/?q=37.7749,-122.4194"
+            val locationUrl = "https://maps.google.com/?q=37.7749,-122.4194" // Example location
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, "My current location: $locationUrl")
@@ -68,25 +66,14 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // For demonstration, a marker is placed in San Francisco.
         val sanFrancisco = LatLng(37.7749, -122.4194)
         mMap.addMarker(MarkerOptions().position(sanFrancisco).title("Marker in San Francisco"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sanFrancisco, 15f))
-
         enableMyLocation()
     }
 
-    /**
-     * Checks for location permissions.
-     * If permissions are not granted, it requests them from the user.
-     */
     private fun enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
@@ -100,10 +87,6 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    /**
-     * Callback for result from requesting permissions.
-     * If the user accepted the permission, the enableMyLocation() method is called.
-     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
