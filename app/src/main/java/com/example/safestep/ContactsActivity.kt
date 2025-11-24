@@ -2,13 +2,16 @@ package com.example.safestep
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.safestep.databinding.ActivityContactsBinding
 import com.example.safestep.databinding.DialogAddContactBinding
 
+/**
+ * Manages a list of emergency contacts.
+ * This screen displays contacts  and provides functionality to add, edit, and delete them.
+ */
 class ContactsActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityContactsBinding
@@ -19,6 +22,17 @@ class ContactsActivity : AppCompatActivity() {
         b = ActivityContactsBinding.inflate(layoutInflater)
         setContentView(b.root)
 
+        // Initialize with an empty list
+        adapter = ContactAdapter(mutableListOf())
+
+        b.recyclerContacts.layoutManager = LinearLayoutManager(this)
+        b.recyclerContacts.adapter = adapter
+
+        // Set up button listeners
+        b.btnAddContact.setOnClickListener {
+            showAddDialog()
+        }
+
         b.btnDeleteContact.setOnClickListener {
             adapter.deleteSelected()
         }
@@ -26,36 +40,31 @@ class ContactsActivity : AppCompatActivity() {
         b.btnEditContact.setOnClickListener {
             adapter.editSelected(this)
         }
-
-        adapter = ContactAdapter(mutableListOf())
-
-        b.recyclerContacts.layoutManager = LinearLayoutManager(this)
-        b.recyclerContacts.adapter = adapter
-
-        b.btnAddContact.setOnClickListener {
-            showAddDialog()
-        }
     }
 
+    /**
+     * Displays an AlertDialog for adding a new contact.
+     * Contains fields for the contact's name and phone number.
+     */
     private fun showAddDialog() {
         val dialogBinding = DialogAddContactBinding.inflate(layoutInflater)
 
-        // Create dialog
         val dialog = AlertDialog.Builder(this)
+            .setTitle("Add New Contact")
             .setView(dialogBinding.root)
             .create()
 
         dialog.show()
 
-        // Handle SAVE button inside the dialog
-        dialogBinding.btnSave.setOnClickListener {
+         dialogBinding.btnSave.setOnClickListener {
             val name = dialogBinding.etName.text.toString().trim()
             val phone = dialogBinding.etPhone.text.toString().trim()
 
+            //  Input Validation
             when {
-                name.isEmpty() -> toast("Name required")
-                phone.isEmpty() -> toast("Phone required")
-                !phone.all { it.isDigit() } -> toast("Phone must be digits only")
+                name.isEmpty() -> toast("Name cannot be empty")
+                phone.isEmpty() -> toast("Phone number cannot be empty")
+                !phone.all { it.isDigit() } -> toast("Phone number must contain only digits")
                 else -> {
                     adapter.addContact(Contact(name, phone))
                     dialog.dismiss()
@@ -64,8 +73,11 @@ class ContactsActivity : AppCompatActivity() {
         }
     }
 
-
-
-    private fun toast(msg: String) =
+    /**
+     * Helper function to display a short Toast message.
+     * @param msg The message to display.
+     */
+    private fun toast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
 }

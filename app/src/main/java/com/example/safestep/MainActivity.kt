@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityMainBinding
 
 /**
- * Home: "Help Me!" opens SMS composer; "I'm Safe" shows a toast; Contacts opens contacts screen.
+ * Main home screen of the application.
+ * Provides the central navigation hub for the user after logging in.
+ * It includes buttons to access key features like the map, contacts, and safety tips.
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
@@ -18,31 +20,36 @@ class MainActivity : AppCompatActivity() {
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
 
-       //profile button
+        // Navigate to the user's profile
         b.btnProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        // “I’m Safe”
+        // Display a confirmation toast that user is safe
         b.btnSafe.setOnClickListener {
             Toast.makeText(this, "Glad you’re safe!", Toast.LENGTH_SHORT).show()
         }
 
-        // “Help Me!” → open SMS app (no SEND_SMS permission required)
+        // Open the SMS app with a pre-filled help message
         b.btnHelp.setOnClickListener {
             val body = "🚨 I need help. This is SafeStep."
-            val uri = Uri.parse("smsto:") // user selects contact
+            val uri = Uri.parse("smsto:")
             startActivity(Intent(Intent.ACTION_SENDTO, uri).putExtra("sms_body", body))
         }
 
-        // Go to Contacts screen
+        // Navigate to the emergency contacts screen
         b.btnContacts.setOnClickListener {
             startActivity(Intent(this, ContactsActivity::class.java))
         }
 
-        // Go to Map screen
+        // Navigate to the map screen
         b.btnMap.setOnClickListener {
             startActivity(Intent(this, LocationActivity::class.java))
+        }
+
+        // Navigate to the safety tips screen
+        b.btnTips.setOnClickListener {
+            startActivity(Intent(this, TipListActivity::class.java))
         }
     }
 }

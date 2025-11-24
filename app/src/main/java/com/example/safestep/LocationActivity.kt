@@ -16,15 +16,18 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+/**
+ * Displays the user's location on a Google Map.
+ * Handles requesting location permissions and provides quick actions like
+ * making a call or sharing the current location of the user.
+ */
 class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
-    private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
 
-        // Load Google Map
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -32,33 +35,46 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
         val quickCall = findViewById<Button>(R.id.btnQuickCall)
         val shareLocation = findViewById<Button>(R.id.btnShareLocation)
 
+        //  Quick Call button
         quickCall.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
-            // Calls a random number atm
+
+            // This currently calls a hardcoded number for simulation.
             intent.data = Uri.parse("tel:123-456-7890")
             startActivity(intent)
         }
 
+        // Share Location button
         shareLocation.setOnClickListener {
+            // This currently shares a hardcoded location for simulation.
             val locationUrl = "https://maps.google.com/?q=37.7749,-122.4194"
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.type = "text/plain"
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "My location: $locationUrl")
-            startActivity(Intent.createChooser(shareIntent, "Share via"))
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, "My current location: $locationUrl")
+            }
+            startActivity(Intent.createChooser(shareIntent, "Share Location Via"))
         }
     }
 
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Example coordinates in San Francisco
-        val currentLocation = LatLng(37.7749, -122.4194)
-        mMap.addMarker(MarkerOptions().position(currentLocation).title("You are here"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
+        // For demonstration, a marker is placed in San Francisco.
+        val sanFrancisco = LatLng(37.7749, -122.4194)
+        mMap.addMarker(MarkerOptions().position(sanFrancisco).title("Marker in San Francisco"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sanFrancisco, 15f))
 
         enableMyLocation()
     }
 
+    /**
+     * Checks for location permissions
+     * If permissions are not granted, it requests them from the user.
+     */
     private fun enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
@@ -72,6 +88,10 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Callback for result from requesting permissions.
+     * If the user accepted the permission, the enableMyLocation() method is called.
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
@@ -83,5 +103,9 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
                 enableMyLocation()
             }
         }
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 }

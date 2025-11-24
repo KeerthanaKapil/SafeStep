@@ -6,6 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityPasswordBinding
 
+/**
+ * Manages a user's password.
+ * Provides fields for current password, a new password, and confirmation.
+ */
 class PasswordActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityPasswordBinding
@@ -16,23 +20,7 @@ class PasswordActivity : AppCompatActivity() {
         setContentView(b.root)
 
         b.btnSave.setOnClickListener {
-            val current = b.etCurrent.text.toString()
-            val new = b.etNew.text.toString()
-            val confirm = b.etConfirm.text.toString()
-
-            if (new != confirm) {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (new.length < 6) {
-                Toast.makeText(this, "Password must be 6+ characters", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            // You can actually save it if needed
-            Toast.makeText(this, "Password updated!", Toast.LENGTH_SHORT).show()
-            finish()
+            updatePassword()
         }
 
         b.btnBack.setOnClickListener { finish() }
@@ -45,7 +33,31 @@ class PasswordActivity : AppCompatActivity() {
             startActivity(Intent(this, ContactsActivity::class.java))
         }
         b.bottomNav.navProfile.setOnClickListener {
+            // This screen is part of the Profile flow, so finish() returns to the previous screen.
             finish()
         }
+    }
+
+    /**
+     * Validates the new password and confirmation, then simulates a password update.
+     */
+    private fun updatePassword() {
+        val current = b.etCurrent.text.toString()
+        val newPass = b.etNew.text.toString()
+        val confirm = b.etConfirm.text.toString()
+
+        // Input Validation
+        if (newPass != confirm) {
+            Toast.makeText(this, "New passwords do not match", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (newPass.length < 6) {
+            Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+
+        Toast.makeText(this, "Password updated successfully!", Toast.LENGTH_SHORT).show()
+        finish()
     }
 }

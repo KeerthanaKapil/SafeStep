@@ -35,6 +35,8 @@
         <activity android:name=".DeleteAccountActivity" android:exported="false" />
         <activity android:name=".LocationActivity" android:exported="false" />
         <activity android:name=".ContactsActivity" android:exported="false" />
+        <activity android:name=".TipListActivity" android:exported="false" />
+        <activity android:name=".TipDetailActivity" android:exported="false" />
 
     </application>
 

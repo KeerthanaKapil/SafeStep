@@ -4,6 +4,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Represents a single user in the Room database.
+ * Each instance of this class corresponds to a row in the user table.
+ *
+ * @property id Identifier for the user.
+ * @property name User's name.
+ * @property email User's email address
+ * @property phone User's phone number.
+ * @property password User's password.
+ */
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey(autoGenerate = true)
@@ -20,4 +30,11 @@ data class User(
 
     @ColumnInfo(name = "user_password")
     val password: String
-)
+) {
+    /**
+     * Overridden to prevent leaking the password if the object is logged.
+     */
+    override fun toString(): String {
+        return "User(id=$id, name='$name', email='$email', phone='$phone')"
+    }
+}

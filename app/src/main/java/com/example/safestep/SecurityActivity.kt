@@ -5,6 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivitySecurityBinding
 
+/**
+ * Provides a hub for security-related user settings.
+ * From here, the user can navigate to manage their password, check-in times,
+ * and initiate account deletion.
+ */
 class SecurityActivity : AppCompatActivity() {
 
     private lateinit var b: ActivitySecurityBinding
@@ -16,28 +21,32 @@ class SecurityActivity : AppCompatActivity() {
 
         loadUserData()
 
-        //  Manage Check-in Time
-        b.btnCheckIn.setOnClickListener {
-            startActivity(Intent(this, CheckInActivity::class.java))
-        }
+        // Navigate to the Check-in screen (Feature not yet implemented)
+//        b.btnCheckIn.setOnClickListener {
+//            startActivity(Intent(this, CheckInActivity::class.java))
+//        }
 
-        //  Manage Password
+        // Navigate to the Password management screen
         b.btnPassword.setOnClickListener {
             startActivity(Intent(this, PasswordActivity::class.java))
         }
 
-        //  Delete Account (show confirmation for now)
-        b.btnDeleteAccount.setOnClickListener {
-            // You can replace this with a real delete flow later
-            android.widget.Toast.makeText(this, "Account deletion disabled for demo", android.widget.Toast.LENGTH_SHORT).show()
+        // Navigate to the account deletion screen (Feature not yet implemented)
+//        b.btnDeleteAccount.setOnClickListener {
+//            startActivity(Intent(this, DeleteAccountActivity::class.java))
+//        }
+
+        // Navigate to the Safety Tips screen
+        b.btnTips.setOnClickListener {
+            startActivity(Intent(this, TipListActivity::class.java))
         }
 
-        //  Back to Profile
+        // Go back to the previous screen (ProfileActivity)
         b.btnBack.setOnClickListener {
             finish()
         }
 
-        //  Bottom Navigation
+        // --- Bottom Navigation Listeners ---
         b.bottomNav.navHome.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
@@ -47,18 +56,19 @@ class SecurityActivity : AppCompatActivity() {
         }
 
         b.bottomNav.navProfile.setOnClickListener {
-            finish()  // returns to ProfileActivity
+            finish()  // Already on a sub-screen of Profile, so just go back
         }
-
-        b.btnDeleteAccount.setOnClickListener {
-            startActivity(Intent(this, DeleteAccountActivity::class.java))
-        }
-
     }
 
+    /**
+     * Loads the current user's name from the [UserRepository] and displays it.
+     */
     private fun loadUserData() {
-        val prefs = getSharedPreferences("user_profile", MODE_PRIVATE)
-        val name = prefs.getString("name", "User")
-        b.tvUserName.text = name
+        val user = UserRepository.currentUser
+        if (user != null) {
+            b.tvUserName.text = user.name
+        } else {
+            b.tvUserName.text = "User"
+        }
     }
 }

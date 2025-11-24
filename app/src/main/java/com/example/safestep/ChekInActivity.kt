@@ -6,6 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityCheckInBinding
 
+/**
+ * Allows the user to set and save a  check-in time.
+ * Uses a TimePicker for time selection and persists the chosen time
+ */
 class CheckInActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityCheckInBinding
@@ -15,11 +19,12 @@ class CheckInActivity : AppCompatActivity() {
         b = ActivityCheckInBinding.inflate(layoutInflater)
         setContentView(b.root)
 
+        // Get the previous check-in time, or use a default.
         val prefs = getSharedPreferences("user_settings", MODE_PRIVATE)
         val savedHour = prefs.getInt("checkin_hour", 12)
         val savedMinute = prefs.getInt("checkin_minute", 0)
 
-        // Load saved time
+        // Set the TimePicker to loaded time
         b.timePicker.hour = savedHour
         b.timePicker.minute = savedMinute
 
@@ -27,6 +32,7 @@ class CheckInActivity : AppCompatActivity() {
             val hour = b.timePicker.hour
             val minute = b.timePicker.minute
 
+            // Save the selected time
             prefs.edit()
                 .putInt("checkin_hour", hour)
                 .putInt("checkin_minute", minute)
@@ -36,6 +42,7 @@ class CheckInActivity : AppCompatActivity() {
             finish()
         }
 
+        // Listener to go back to the previous screen
         b.btnBack.setOnClickListener {
             finish()
         }
@@ -48,7 +55,7 @@ class CheckInActivity : AppCompatActivity() {
             startActivity(Intent(this, ContactsActivity::class.java))
         }
         b.bottomNav.navProfile.setOnClickListener {
-            finish()
+             finish()
         }
     }
 }
