@@ -1,78 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#B19CD9">
+    android:padding="20dp"
+    android:background="#B19CD9"
+    android:layout_height="match_parent">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNav"
-        android:padding="20dp">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <TextView
+            android:text="Safety Tips"
+            android:textSize="28sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:padding="16dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="Safety Tips"
-                android:textColor="@android:color/white"
-                android:textSize="28sp" />
+        <Button
+            android:id="@+id/btnWork"
+            android:text="Safety at Work"
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#75A3BA"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btnWork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="#75A3BA"
-                android:text="Safety at Work" />
+        <Button
+            android:id="@+id/btnHome"
+            android:text="Safety at Home"
+            android:layout_width="match_parent"
+            android:backgroundTint="#75A3BA"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btnHome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="#75A3BA"
-                android:text="Safety at Home" />
+        <Button
+            android:id="@+id/btnUni"
+            android:text="Safety at University"
+            android:layout_width="match_parent"
+            android:backgroundTint="#75A3BA"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btnUni"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="#75A3BA"
-                android:text="Safety at University" />
+        <Button
+            android:id="@+id/btnOnline"
+            android:text="Women Safety Online"
+            android:layout_width="match_parent"
+            android:backgroundTint="#75A3BA"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btnOnline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="#75A3BA"
-                android:text="Women Safety Online" />
+        <Button
+            android:id="@+id/btnStreet"
+            android:text="Safety on the Streets"
+            android:backgroundTint="#75A3BA"
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btnStreet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="#75A3BA"
-                android:text="Safety on the Streets" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- Reusable Bottom Navigation Bar -->
-    <include
-        android:id="@+id/bottomNav"
-        layout="@layout/include_bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
-
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>
