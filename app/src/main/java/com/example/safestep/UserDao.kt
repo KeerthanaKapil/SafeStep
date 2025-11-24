@@ -6,7 +6,10 @@ import androidx.room.Query
 
 /**
  * DAO for the User entity.
- * This interface defines all the database interactions for the `users` table.
+ * This interface defines all the database interactions for the `users` table
+ *
+ * @author  Itzayana Aguilar
+ * @version 1.0
  */
 @Dao
 interface UserDao {

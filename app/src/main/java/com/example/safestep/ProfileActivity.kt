@@ -10,6 +10,9 @@ import com.example.safestep.databinding.ActivityProfileBinding
  * Displays the user's profile information.
  * Helps with managing user specific data and settings,
  * providing navigation to edit profile details and manage security settings.
+ *
+ * @author  Jovanni Maya
+ * @version 1.0
  */
 class ProfileActivity : AppCompatActivity() {
 

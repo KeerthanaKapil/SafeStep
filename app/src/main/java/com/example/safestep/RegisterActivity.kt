@@ -12,6 +12,9 @@ import kotlinx.coroutines.launch
 /**
  * Class for handling new user registration.
  * Provides input fields for user details, validates the input, and then saves the new user to the Room database.
+ *
+ * @author  Itzayana Aguilar
+ * @version 1.0
  */
 class RegisterActivity : AppCompatActivity() {
 

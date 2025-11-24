@@ -4,6 +4,9 @@ package com.example.safestep
  * Holds the content for all safety tips.
  * The indices in the titles and contents arrays are designed to correspond
  * with each other, allowing for easy lookup.
+ *
+ * @author  Keerthana Baskaran
+ * @version 1.0
  */
 object TipsData {
     /**

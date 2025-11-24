@@ -2,6 +2,9 @@ package com.example.safestep
 
 /**
  * A simple object to hold the user logged-in user's data.
+ *
+ * @author  Itzayana Aguilar
+ * @version 1.0
  */
 object UserRepository {
     /**

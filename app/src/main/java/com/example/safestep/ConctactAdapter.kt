@@ -14,6 +14,8 @@ import com.example.safestep.databinding.ItemContactBinding
  * Handles creating views for each contact, binding data to those views,
  * and managing user interactions (like selection, editing, and deletion).
  *
+ * @author  Jovanni Maya
+ * @version 1.0
  * @param contacts A mutable list of Contact objects to be displayed.
  */
 class ContactAdapter(

@@ -9,6 +9,9 @@ import com.example.safestep.databinding.ActivityPasswordBinding
 /**
  * Manages a user's password.
  * Provides fields for current password, a new password, and confirmation.
+ *
+ * @author  Jovanni Maya
+ * @version 1.0
  */
 class PasswordActivity : AppCompatActivity() {
 

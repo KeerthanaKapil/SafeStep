@@ -11,6 +11,9 @@ import com.example.safestep.databinding.DialogAddContactBinding
 /**
  * Manages a list of emergency contacts.
  * This screen displays contacts  and provides functionality to add, edit, and delete them.
+ *
+ * @author  Jovanni Maya
+ * @version 1.0
  */
 class ContactsActivity : AppCompatActivity() {
 

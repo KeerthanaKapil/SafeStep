@@ -9,6 +9,9 @@ import com.example.safestep.databinding.ActivityEditProfileBinding
 /**
  * Allows the user to edit their profile information.
  * Provides fields to update the user's name, phone number, and address.
+ *
+ * @author  Jovanni Maya
+ * @version 1.0
  */
 class EditProfileActivity : AppCompatActivity() {
 

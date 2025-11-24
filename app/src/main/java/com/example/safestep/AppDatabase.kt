@@ -12,6 +12,9 @@ import androidx.room.RoomDatabase
  *
  * @property User List of entities included in the database.
  * @property version Version of the database.
+ *
+ * @author  Itzayana Aguilar
+ * @version 1.0
  */
 @Database(entities = [User::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

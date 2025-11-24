@@ -10,6 +10,9 @@ import com.example.safestep.databinding.ActivityDeleteAccountBinding
  * Handles the user account deletion process.
  * Provides confirmation screen and, upon confirmation, clears
  * all user data stored in SharedPreferences before navigating away.
+ *
+ * @author  Jovanni Maya
+ * @version 1.0
  */
 class DeleteAccountActivity : AppCompatActivity() {
 
