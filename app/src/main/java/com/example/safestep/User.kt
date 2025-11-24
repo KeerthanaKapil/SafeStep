@@ -13,6 +13,9 @@ import androidx.room.PrimaryKey
  * @property email User's email address
  * @property phone User's phone number.
  * @property password User's password.
+ *
+ * @author  Itzayana Aguilar
+ * @version 1.0
  */
 @Entity(tableName = "users")
 data class User(

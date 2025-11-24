@@ -12,6 +12,9 @@ import kotlinx.coroutines.launch
 /**
  * Activity for handling user login.
  * It validates user info in the Room database and upon success, navigates to the main part of the application.
+ *
+ * @author  Keerthana Baskaran
+ * @version 1.0
  */
 class LoginActivity : AppCompatActivity() {
     private lateinit var b: ActivityLoginBinding

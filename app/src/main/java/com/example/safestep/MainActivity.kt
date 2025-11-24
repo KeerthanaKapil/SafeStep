@@ -11,6 +11,9 @@ import com.example.safestep.databinding.ActivityMainBinding
  * Main home screen of the application.
  * Provides the central navigation hub for the user after logging in.
  * It includes buttons to access key features like the map, contacts, and safety tips.
+ *
+ * @author  Keerthana Baskaran, Itzayana Aguilar, Jovanni Maya
+ * @version 1.0
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding

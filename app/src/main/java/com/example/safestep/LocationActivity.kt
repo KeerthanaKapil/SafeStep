@@ -20,6 +20,9 @@ import com.google.android.gms.maps.model.MarkerOptions
  * Displays the user's location on a Google Map.
  * Handles requesting location permissions and provides quick actions like
  * making a call or sharing the current location of the user.
+ *
+ * @author  Itzayana Aguilar
+ * @version 1.0
  */
 class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap

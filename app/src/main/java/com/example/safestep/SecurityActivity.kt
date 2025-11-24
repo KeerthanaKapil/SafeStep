@@ -9,6 +9,9 @@ import com.example.safestep.databinding.ActivitySecurityBinding
  * Provides a hub for security-related user settings.
  * From here, the user can navigate to manage their password, check-in times,
  * and initiate account deletion.
+ *
+ * @author  Jovanni Maya
+ * @version 1.0
  */
 class SecurityActivity : AppCompatActivity() {
 

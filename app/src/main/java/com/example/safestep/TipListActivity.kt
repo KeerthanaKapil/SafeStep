@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
  * Displays a list of safety tip categories.
  * Each category is represented by a button, and clicking a button
  * navigates the user to the TipDetailActivity to display the specific tip.
+ *
+ * @author  Keerthana Baskaran
+ * @version 1.0
  */
 class TipListActivity : AppCompatActivity() {
 

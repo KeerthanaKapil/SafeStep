@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 /**
  * Displays a detailed safety tip.
  * Receives an index from TipListActivity and uses it to look up the coressponding tip from  TipsData.
+ *
+ * @author  Keerthana Baskaran
+ * @version 1.0
  */
 class TipDetailActivity : AppCompatActivity() {
 

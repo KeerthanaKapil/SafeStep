@@ -9,6 +9,9 @@ import com.example.safestep.databinding.ActivityCheckInBinding
 /**
  * Allows the user to set and save a  check-in time.
  * Uses a TimePicker for time selection and persists the chosen time
+ *
+ * @author  Keerthana Baskaran
+ * @version 1.0
  */
 class CheckInActivity : AppCompatActivity() {
 
