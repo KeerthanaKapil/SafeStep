@@ -5,10 +5,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.safestep.databinding.ActivityLocationBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -26,29 +26,27 @@ import com.google.android.gms.maps.model.MarkerOptions
  */
 class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
+    private lateinit var b: ActivityLocationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_location)
+        b = ActivityLocationBinding.inflate(layoutInflater)
+        setContentView(b.root)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        val quickCall = findViewById<Button>(R.id.btnQuickCall)
-        val shareLocation = findViewById<Button>(R.id.btnShareLocation)
-
-        //  Quick Call button
-        quickCall.setOnClickListener {
+        // Quick Call button
+        b.btnQuickCall.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
-
             // This currently calls a hardcoded number for simulation.
             intent.data = Uri.parse("tel:123-456-7890")
             startActivity(intent)
         }
 
         // Share Location button
-        shareLocation.setOnClickListener {
+        b.btnShareLocation.setOnClickListener {
             // This currently shares a hardcoded location for simulation.
             val locationUrl = "https://maps.google.com/?q=37.7749,-122.4194"
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
@@ -56,6 +54,17 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
                 putExtra(Intent.EXTRA_TEXT, "My current location: $locationUrl")
             }
             startActivity(Intent.createChooser(shareIntent, "Share Location Via"))
+        }
+
+        // --- Bottom Navigation Listeners ---
+        b.bottomNav.navHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+        b.bottomNav.navContacts.setOnClickListener {
+            startActivity(Intent(this, ContactsActivity::class.java))
+        }
+        b.bottomNav.navProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
@@ -75,7 +84,7 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     /**
-     * Checks for location permissions
+     * Checks for location permissions.
      * If permissions are not granted, it requests them from the user.
      */
     private fun enableMyLocation() {

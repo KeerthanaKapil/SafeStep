@@ -2,35 +2,43 @@ package com.example.safestep
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.safestep.databinding.ActivityTipListBinding
 
 /**
  * Displays a list of safety tip categories.
  * Each category is represented by a button, and clicking a button
- * navigates the user to the TipDetailActivity to display the specific tip.
+ * navigates the user to the [TipDetailActivity] to display the specific tip.
  *
  * @author  Keerthana Baskaran
  * @version 1.0
  */
 class TipListActivity : AppCompatActivity() {
 
+    private lateinit var b: ActivityTipListBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tip_list)
+        b = ActivityTipListBinding.inflate(layoutInflater)
+        setContentView(b.root)
 
         // Set up listeners for each tip category button
-        val btnWork = findViewById<Button>(R.id.btnWork)
-        val btnHome = findViewById<Button>(R.id.btnHome)
-        val btnUni = findViewById<Button>(R.id.btnUni)
-        val btnOnline = findViewById<Button>(R.id.btnOnline)
-        val btnStreet = findViewById<Button>(R.id.btnStreet)
+        b.btnWork.setOnClickListener { openTipDetail(0) }
+        b.btnHome.setOnClickListener { openTipDetail(1) }
+        b.btnUni.setOnClickListener { openTipDetail(2) }
+        b.btnOnline.setOnClickListener { openTipDetail(3) }
+        b.btnStreet.setOnClickListener { openTipDetail(4) }
 
-        btnWork.setOnClickListener { openTipDetail(0) }
-        btnHome.setOnClickListener { openTipDetail(1) }
-        btnUni.setOnClickListener { openTipDetail(2) }
-        btnOnline.setOnClickListener { openTipDetail(3) }
-        btnStreet.setOnClickListener { openTipDetail(4) }
+        // --- Bottom Navigation Listeners ---
+        b.bottomNav.navHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+        b.bottomNav.navContacts.setOnClickListener {
+            startActivity(Intent(this, ContactsActivity::class.java))
+        }
+        b.bottomNav.navProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 
     /**
