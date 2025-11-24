@@ -9,8 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import com.example.safestep.databinding.ActivityLoginBinding
 import kotlinx.coroutines.launch
 
+/**
+ * Activity for handling user login.
+ * It validates user info in the Room database and upon success, navigates to the main part of the application.
+ */
 class LoginActivity : AppCompatActivity() {
-
     private lateinit var b: ActivityLoginBinding
     private lateinit var userDao: UserDao
 
@@ -19,40 +22,10 @@ class LoginActivity : AppCompatActivity() {
         b = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(b.root)
 
-        // THIS makes AppDatabase used
         userDao = AppDatabase.getDatabase(applicationContext).userDao()
 
         b.btnLogin.setOnClickListener {
-            val email = b.etEmail.text.toString().trim()
-            val pass = b.etPassword.text.toString().trim()
-
-            if (email.isEmpty() || pass.isEmpty()) {
-                toast("Enter email and password")
-                return@setOnClickListener
-            }
-
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                toast("Invalid email")
-                return@setOnClickListener
-            }
-
-            lifecycleScope.launch {
-                val user = userDao.findByEmail(email) // UserDao USED
-
-                runOnUiThread {
-                    if (user != null && user.password == pass) {
-
-                        // UserRepository is USED here
-                        UserRepository.currentUser = user
-
-                        toast("Login successful!")
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                        finish()
-                    } else {
-                        toast("Invalid email or password")
-                    }
-                }
-            }
+            loginUser()
         }
 
         b.tvRegister.setOnClickListener {
@@ -60,6 +33,48 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun toast(msg: String) =
+    /**
+     * Gathers user credentials, validates them against the database,
+     * and handles the login result.
+     */
+    private fun loginUser() {
+        val email = b.etEmail.text.toString().trim()
+        val pass = b.etPassword.text.toString().trim()
+
+        //Input Validation
+        if (email.isEmpty() || pass.isEmpty()) {
+            toast("Please enter both email and password")
+            return
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            toast("Please enter a valid email address")
+            return
+        }
+
+        // Database Lookup
+        lifecycleScope.launch {
+            val user = userDao.findByEmail(email)
+
+            runOnUiThread {
+                if (user != null && user.password == pass) {
+                    // Login success: store user data and navigate to main screen
+                    UserRepository.currentUser = user
+                    toast("Login successful!")
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    finish() // Prevent returning to login screen
+                } else {
+                    // Login failure
+                    toast("Invalid email or password")
+                }
+            }
+        }
+    }
+
+    /**
+     * Helper function to display a short Toast message.
+     * @param msg The message to display.
+     */
+    private fun toast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
 }

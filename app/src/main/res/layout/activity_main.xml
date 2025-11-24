@@ -37,4 +37,10 @@
         android:layout_marginTop="@dimen/space_m"
         android:layout_marginBottom="@dimen/space_m" />
 
+    <Button
+        android:id="@+id/btnTips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Safety Tips" />
+
 </LinearLayout>

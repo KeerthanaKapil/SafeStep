@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/profilePurple">
 
-    <!-- Header -->
     <LinearLayout
         android:id="@+id/headerSecurity"
         android:layout_width="0dp"
@@ -26,7 +25,6 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <!-- Avatar -->
     <ImageView
         android:id="@+id/imgAvatar"
         android:layout_width="120dp"
@@ -39,7 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Username -->
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
@@ -52,7 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Manage Check-in -->
     <Button
         android:id="@+id/btnCheckIn"
         style="@style/ProfileTealButton"
@@ -72,7 +68,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Delete Account -->
     <Button
         android:id="@+id/btnDeleteAccount"
         style="@style/ProfileTealButton"
@@ -82,7 +77,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Back Button -->
+    <Button
+        android:id="@+id/btnTips"
+        style="@style/ProfileTealButton"
+        android:text="Safety Tips"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteAccount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <Button
         android:id="@+id/btnBack"
         android:layout_width="140dp"
@@ -96,7 +99,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="32dp"/>
 
-    <!-- BOTTOM NAV ALWAYS AT BOTTOM -->
     <include
         android:id="@+id/bottomNav"
         layout="@layout/include_bottom_nav"

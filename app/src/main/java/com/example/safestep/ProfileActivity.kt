@@ -6,6 +6,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safestep.databinding.ActivityProfileBinding
 
+/**
+ * Displays the user's profile information.
+ * Helps with managing user specific data and settings,
+ * providing navigation to edit profile details and manage security settings.
+ */
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityProfileBinding
@@ -17,18 +22,18 @@ class ProfileActivity : AppCompatActivity() {
 
         loadUserData()
 
-        // Manage Information -> Edit Profile
+        // Navigate to the Edit Profile screen
         b.btnManageInformation.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)
-            startActivityForResult(intent, 1001)
+            startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE)
         }
 
-        // ✅ FIX: Manage Security button working now
+        // Navigate to the Security screen
         b.btnManageSecurity.setOnClickListener {
             startActivity(Intent(this, SecurityActivity::class.java))
         }
 
-        // Bottom navigation
+        // Bottom Navigation --
         b.bottomNav.navHome.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
@@ -38,26 +43,37 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         b.bottomNav.navProfile.setOnClickListener {
-            // Already on Profile → do nothing
+             }
+    }
+
+    /**
+     * Loads user data from SharedPreferences and updates it.
+     *
+     */
+    private fun loadUserData() {
+        val user = UserRepository.currentUser
+        if (user != null) {
+            b.tvUserName.text = user.name
+        } else {
+            // Fallback for when no user is logged in, though this screen
+            // should not typically be accessible in that state.
+            b.tvUserName.text = "User"
         }
     }
 
-
-    private fun loadUserData() {
-        val prefs = getSharedPreferences("user_profile", MODE_PRIVATE)
-
-        val name = prefs.getString("name", "User")
-        val address = prefs.getString("address", "")
-        val phone = prefs.getString("phone", "")
-
-        b.tvUserName.text = name
-    }
-
+    /**
+     * Handles the result from the EditProfileActivity.
+     * If the profile was successfully updated, it reloads the user data to reflect the changes.
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 1001 && resultCode == Activity.RESULT_OK) {
-            loadUserData()   // refresh username live
+        if (requestCode == EDIT_PROFILE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            loadUserData() // Refresh user data after editing
         }
+    }
+
+    companion object {
+        private const val EDIT_PROFILE_REQUEST_CODE = 1001
     }
 }

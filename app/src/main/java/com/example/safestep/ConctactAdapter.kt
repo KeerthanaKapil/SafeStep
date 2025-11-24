@@ -1,22 +1,33 @@
 package com.example.safestep
 
 import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.example.safestep.databinding.DialogAddContactBinding
 import com.example.safestep.databinding.ItemContactBinding
-import android.content.Context
 
-
+/**
+ * Manages the display and interaction of a list of Contact objects
+ * Handles creating views for each contact, binding data to those views,
+ * and managing user interactions (like selection, editing, and deletion).
+ *
+ * @param contacts A mutable list of Contact objects to be displayed.
+ */
 class ContactAdapter(
     private val contacts: MutableList<Contact>
 ) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+    // Tracks the position of the currently selected item
     var selectedPosition: Int = -1
 
-
+    /**
+     * ViewHolder for a contact item. Holds the view for the item layout,
+     * which allows easy access to the views.
+     *
+     * @param b The view binding for the layout.
+     */
     inner class ContactViewHolder(val b: ItemContactBinding)
         : RecyclerView.ViewHolder(b.root)
 
@@ -29,21 +40,26 @@ class ContactAdapter(
         return ContactViewHolder(binding)
     }
 
+    /**
+     * Binds the data from a Contact object to the views in the ViewHolder.
+     * Also sets up click listeners for item selection and the context menu.
+     */
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val c = contacts[position]
 
         holder.b.tvName.text = c.name
         holder.b.tvPhone.text = c.phone
 
+        // Handles item selection
         holder.itemView.setOnClickListener {
             selectedPosition = holder.adapterPosition
-            notifyDataSetChanged()
+            notifyDataSetChanged() // Re-bind all views to update selection highlights
         }
-        // Highlight selected item
+
+        // Highlight the selected item
         holder.itemView.alpha = if (position == selectedPosition) 0.6f else 1f
 
-
-        // Three-dot menu
+        // Set up the three-dot menu for editing and deleting
         holder.b.btnMenu.setOnClickListener {
             val popup = PopupMenu(holder.itemView.context, holder.b.btnMenu)
             popup.menu.add("Edit")
@@ -59,14 +75,22 @@ class ContactAdapter(
             popup.show()
         }
     }
+
+    /**
+     * Deletes the currently selected contact from the list.
+     */
     fun deleteSelected() {
         if (selectedPosition >= 0 && selectedPosition < contacts.size) {
             contacts.removeAt(selectedPosition)
             notifyItemRemoved(selectedPosition)
-            selectedPosition = -1
+            selectedPosition = -1 // Reset selection
         }
     }
 
+    /**
+     * Opens a dialog to edit the current selected contact.
+     * @param context The context needed to create the AlertDialog.
+     */
     fun editSelected(context: Context) {
         if (selectedPosition < 0) return
 
@@ -90,19 +114,28 @@ class ContactAdapter(
             .show()
     }
 
-
     override fun getItemCount(): Int = contacts.size
 
+    /**
+     * Adds a new contact to the end of the list.
+     * @param contact The [Contact] to add.
+     */
     fun addContact(contact: Contact) {
         contacts.add(contact)
         notifyItemInserted(contacts.size - 1)
     }
 
+    /**
+     * Helper to delete a contact.
+     */
     private fun deleteContact(position: Int) {
         contacts.removeAt(position)
         notifyItemRemoved(position)
     }
 
+    /**
+     * Helper to open an edit for a contact.
+     */
     private fun editContact(position: Int, holder: ContactViewHolder) {
         val ctx = holder.itemView.context
         val dialogBinding = DialogAddContactBinding.inflate(LayoutInflater.from(ctx))
